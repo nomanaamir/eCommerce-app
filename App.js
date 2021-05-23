@@ -10,7 +10,8 @@ import React, { useEffect } from 'react';
 import {
   StyleSheet,
   LogBox,
-  BackHandler
+  BackHandler,
+  View
 } from 'react-native';
 
 // provider, store
@@ -24,6 +25,8 @@ import Home from './src/screens/home/index';
 import Cart from './src/screens/cart/index';
 import ProductDetails from './src/screens/product-details/index';
 
+// components
+import Navbar from './src/components/navbar/index';
 
 LogBox.ignoreLogs(['Setting a timer for a long period of time'])
 const Stack = createStackNavigator();
@@ -42,26 +45,31 @@ function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
+      {/* <View > */}
+        <Navbar />
+        <NavigationContainer>
+          <Stack.Navigator>
 
-          <Stack.Screen name="home" component={Home} options={{ headerShown: false, cardStyleInterpolator: forFade, }} />
-          <Stack.Screen name="productDetails" component={ProductDetails} options={{
-            headerTintColor: 'white', headerTitle: 'Sign Up', headerTitleAlign: 'center', headerStyle: {
-              backgroundColor: '#687089',
-              elevation: 0,
-              shadowOpacity: 0,
-            }, cardStyleInterpolator: forFade
-          }} />
-          <Stack.Screen name="cart" component={Cart} options={{
-            headerTintColor: 'white', headerTitle: 'Sign In', headerTitleAlign: 'center', headerStyle: {
-              backgroundColor: '#687089',
-              elevation: 0,
-              shadowOpacity: 0,
-            }, cardStyleInterpolator: forFade
-          }} />
-        </Stack.Navigator>
-      </NavigationContainer>
+            <Stack.Screen name="home" component={Home} options={{ headerShown: false, cardStyleInterpolator: forFade, }} />
+            <Stack.Screen name="productDetails" component={ProductDetails} options={{
+              headerTintColor: 'white', headerTitle: 'Sign Up', headerTitleAlign: 'center', headerStyle: {
+                backgroundColor: '#687089',
+                elevation: 0,
+                shadowOpacity: 0,
+              }, cardStyleInterpolator: forFade
+            }} />
+            <Stack.Screen name="cart" component={Cart} options={{
+              headerTintColor: 'white', headerTitle: 'Sign In', headerTitleAlign: 'center', headerStyle: {
+                backgroundColor: '#687089',
+                elevation: 0,
+                shadowOpacity: 0,
+              }, cardStyleInterpolator: forFade
+            }} />
+          </Stack.Navigator>
+        </NavigationContainer>
+
+
+      {/* </View> */}
     </Provider>
   );
 };
