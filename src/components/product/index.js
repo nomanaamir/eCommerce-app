@@ -36,7 +36,7 @@ function Product(props) {
 
 
     return (
-        <TouchableOpacity style={styles.product}>
+        <TouchableOpacity style={styles.product} onPress={()=> navigation.navigate('productDetails')}>
             <View style={styles.productFrame}>
                 <Image style={{ height: '100%', width: '100%', borderTopLeftRadius: 8, borderTopRightRadius: 8 }} source={img} />
                 {
