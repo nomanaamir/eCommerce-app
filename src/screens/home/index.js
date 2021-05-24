@@ -10,11 +10,12 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux';
 import Categories from '../../components/categories/index';
 import Slider from '../../components/slider/index';
 import Product from '../../components/product/index'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import { setNavigationProps } from '../../Store/Middlewares/middlewares';
 const { height, fontScale } = Dimensions.get('window')
 
 
@@ -69,7 +70,7 @@ function Home(props) {
     ]
     const { navigation } = props;
     useEffect(() => {
-
+        props.setNavigationPropsAction(navigation);
     }, []);
 
 
@@ -79,7 +80,7 @@ function Home(props) {
                 contentInsetAdjustmentBehavior="automatic"
             >
                 <View>
-                    <Categories />
+                    <Categories title={true} discountTag={false} />
                     <Slider />
 
                     <View style={styles.card}>
@@ -93,7 +94,7 @@ function Home(props) {
                                 {
                                     novelties.map((item, index) => {
                                         return (
-                                            <Product product={item} key={index} />
+                                            <Product navigation={navigation} product={item} key={index} />
                                         )
                                     })
                                 }
@@ -134,7 +135,7 @@ function Home(props) {
                                 {
                                     bestSellers.map((item, index) => {
                                         return (
-                                            <Product product={item} key={index} />
+                                            <Product navigation={navigation} product={item} key={index} />
                                         )
                                     })
                                 }
@@ -175,7 +176,7 @@ function Home(props) {
                                 {
                                     novelties.map((item, index) => {
                                         return (
-                                            <Product product={item} key={index} />
+                                            <Product navigation={navigation} product={item} key={index} />
                                         )
                                     })
                                 }
@@ -219,5 +220,14 @@ const styles = StyleSheet.create({
     }
 });
 
+function mapStateToProps(state) {
 
-export default Home;
+    return {
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return ({
+        setNavigationPropsAction: (navigation) => { dispatch(setNavigationProps(navigation)) },
+    })
+}
+export default connect(null, mapDispatchToProps)(Home);

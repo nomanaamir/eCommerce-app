@@ -21,7 +21,7 @@ const { height, width, fontScale } = Dimensions.get('window')
 
 function Categories(props) {
 
-    const { navigation } = props;
+    const { navigation, title, discountTag } = props;
     const items = [
         {
             img: require('../../../assets/mobiles.jpg'),
@@ -62,12 +62,23 @@ function Categories(props) {
                     <TouchableOpacity style={styles.categoriesItem}>
                         <View style={styles.categoriesItem_frame}>
                             <Image style={styles.categoriesItem_frame_img} source={item.img} />
+                           {
+                               discountTag ?
+                               <View style={styles.discount}><Text style={styles.discountText}>-10%</Text></View>
+                               :
+                               null
+                           }
                         </View>
-                        <View style={styles.categoriesItem_name}>
-                            <Text numberOfLines={1}>
-                                {item.name}
-                            </Text>
-                        </View>
+                        {
+                            title ?
+
+                                <View style={styles.categoriesItem_name}>
+                                    <Text numberOfLines={1}>
+                                        {item.name}
+                                    </Text>
+                                </View>
+                                : null
+                        }
                     </TouchableOpacity>
                 )}
             // horizontal={true}
@@ -93,10 +104,26 @@ const styles = StyleSheet.create({
     },
     categoriesItem_frame: {
         flex: 2,
+        position: 'relative'
     },
     categoriesItem_frame_img: {
         height: '100%',
         width: '100%'
+    },
+    discount: {
+        position: 'absolute',
+        backgroundColor: '#fd5240',
+        right: 2,
+        top: 2,
+        height: height / 18,
+        width: width / 9,
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    discountText: {
+        color: 'white',
+        fontSize: fontScale * 7
     },
     categoriesItem_name: {
         flex: 1,

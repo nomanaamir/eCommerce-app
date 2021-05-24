@@ -10,9 +10,9 @@ import {
     TouchableOpacity,
     TextInput
 } from 'react-native';
+import { connect } from 'react-redux';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 const { height, fontScale } = Dimensions.get('window')
 
@@ -29,7 +29,7 @@ function Navbar(props) {
         <View style={styles.navbar}>
             <View style={styles.header}>
                 <View style={styles.col1}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.openDrawer()}>
                         <Feather name="menu" color="white" size={25} />
                     </TouchableOpacity>
                 </View>
@@ -119,10 +119,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
         // backgroundColor: 'white',
     },
-    categoriesItemText:{
+    categoriesItemText: {
         color: 'white'
     }
 });
 
-
-export default Navbar;
+function mapStateToProps(state) {
+    return {
+        navigation: state.root.navigation_props,
+    }
+}
+function mapDispatchToProps(dispatch) {
+    return ({
+       
+    })
+}
+export default connect(mapStateToProps, null)(Navbar);
