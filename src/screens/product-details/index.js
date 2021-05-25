@@ -11,6 +11,8 @@ import {
     Button
 } from 'react-native';
 const { height, fontScale } = Dimensions.get('window')
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Navbar from '../../../src/components/navbar/index';
 import Slider from '../../components/slider/index';
 import Categories from '../../components/categories/index';
 
@@ -24,10 +26,16 @@ function ProductDetails(props) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <Navbar />
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
             >
                 <View>
+                    <View style={styles.backHeader}>
+                        <TouchableOpacity style={{ padding: 5 }} onPress={() => navigation.goBack()}><AntDesign name="left" color="#e54c50" size={20} /></TouchableOpacity>
+                        <Text style={styles.backHeaderText}>Back</Text>
+                    </View>
+
                     <Slider />
 
                     <View style={styles.details}>
@@ -78,7 +86,7 @@ function ProductDetails(props) {
                         <Button
                             title='Add to Cart'
                             color='#fd5240'
-                            onPress={()=> navigation.navigate('cart')}
+                            onPress={() => navigation.navigate('cart')}
                         />
                     </View>
                 </View>
@@ -91,6 +99,20 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
         flex: 1,
+    },
+    backHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderBottomWidth: 2,
+        borderBottomColor: '#c6c6c6',
+        borderStyle: 'solid',
+        height: height / 14,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    backHeaderText: {
+        fontSize: fontScale * 15,
+        color: '#e54c50'
     },
     details: {
         // backgroundColor: 'grey',

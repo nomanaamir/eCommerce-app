@@ -18,6 +18,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { setNavigationProps } from '../../Store/Middlewares/middlewares';
 const { height, fontScale } = Dimensions.get('window')
 
+import Navbar from '../../../src/components/navbar/index';
 
 function Home(props) {
     // require('../../../assets/mobiles.jpg'),
@@ -76,6 +77,7 @@ function Home(props) {
 
     return (
         <SafeAreaView style={styles.container}>
+             <Navbar />
             <ScrollView
                 contentInsetAdjustmentBehavior="automatic"
             >

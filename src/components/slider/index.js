@@ -23,9 +23,9 @@ function Slider(props) {
     const [sliderIndex, setSliderIndex] = useState(0)
     const { navigation } = props;
     const items = [
+        require('../../../assets/clothes.jpg'),
         require('../../../assets/mobiles.jpg'),
         require('../../../assets/laptops.jpg'),
-        require('../../../assets/clothes.jpg'),
         require('../../../assets/kitchen.jpg'),
         require('../../../assets/kitchen.jpg'),
     ]

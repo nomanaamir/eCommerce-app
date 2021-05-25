@@ -111,16 +111,16 @@ const styles = StyleSheet.create({
 
     },
     name: {
-        fontSize: fontScale * 15,
+        fontSize: fontScale * 14.5,
         fontWeight: 'bold'
     },
     discountPrice: {
-        fontSize: fontScale * 15,
+        fontSize: fontScale * 14,
         fontWeight: 'bold',
         color: '#068306'
     },
     price: {
-        fontSize: fontScale * 15,
+        fontSize: fontScale * 14,
         fontWeight: 'bold',
         color: '#fe0405',
         textDecorationLine: 'line-through'
